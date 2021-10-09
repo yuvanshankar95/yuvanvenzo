@@ -21,10 +21,10 @@ def index():
 def login():
     global auth
     auth = tweepy.OAuthHandler("L257qgdPIAy49BicnSfTTXdZ0", "KtiGNxeKgVNeOxsDbW9sU9QfwOKzc1k0sGp9x8QGNZ9c37QjDe")
-    # redirect_user = auth.get_authorization_url()
+    redirect_user = auth.get_authorization_url()
     # webbrowser.open_new_tab(redirect_user)
     # return redirect(redirect_user)
-    return render_template('tweets.html',data=auth.get_authorization_url())
+    return render_template('tweets.html',data=redirect_user)
 
 
 @application.route("/pin",methods=['POST'])
