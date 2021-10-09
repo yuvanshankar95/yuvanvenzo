@@ -4,10 +4,6 @@ import webbrowser
 import tweepy
 from pyre import Add,Fetch,Remove
 
-
-
-#twitter csunsumerkeys and tokens
-auth = tweepy.OAuthHandler("L257qgdPIAy49BicnSfTTXdZ0", "KtiGNxeKgVNeOxsDbW9sU9QfwOKzc1k0sGp9x8QGNZ9c37QjDe")
 # "AAAAAAAAAAAAAAAAAAAAANDPUQEAAAAAoJH%2BsG9G84S5Y6Pt9QD6n11ILk8%3DJZQbpByutD23GDNfmBWZlaOYn83NdXo1n4O2P99dnZKTaioLOO")
 
 
@@ -23,6 +19,7 @@ def index():
 @application.route('/', methods=['POST'])
 def login():
     global auth
+    auth = tweepy.OAuthHandler("L257qgdPIAy49BicnSfTTXdZ0", "KtiGNxeKgVNeOxsDbW9sU9QfwOKzc1k0sGp9x8QGNZ9c37QjDe")
     redirect_user = auth.get_authorization_url()
     webbrowser.open(redirect_user)
     return render_template('tweets.html')
