@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, redirect,request
 from backend import Login
 import webbrowser
 import tweepy
@@ -16,13 +16,17 @@ def index():
     return render_template('index.html')
 
 
+
 @application.route('/', methods=['POST'])
 def login():
     global auth
     auth = tweepy.OAuthHandler("L257qgdPIAy49BicnSfTTXdZ0", "KtiGNxeKgVNeOxsDbW9sU9QfwOKzc1k0sGp9x8QGNZ9c37QjDe")
     redirect_user = auth.get_authorization_url()
-    webbrowser.open(redirect_user)
+    webbrowser.open_new_tab(redirect_user)
+    # return redirect(redirect_user)
     return render_template('tweets.html')
+
+
 @application.route("/pin",methods=['POST'])
 def data():
     pin = request.form['pin']
